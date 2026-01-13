@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 / 1</title>
+    <style>
+        input , button{
+            font-size: larger;
+        }
+        th , td{
+            font-size: 45px;
+            margin-top:10px;
+            border-top: 0px;
+            border-bottom: 1px solid gray;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>
+        ป้อนเลขสูตรคูณ[1-12]:
+    </h1>
+    <input type="text" id="number1"></input>
+    <button onclick="calculated()">แสดงสูตรคูณ</button>
+    <div id="div1"></div>
+    </center>
+    <script>
+        function calculated(){
+            const h = ["เลขคูณ","ผลลัพธ์"];
+            let table = document.createElement("table");
+            let head = document.createElement("tr");
+            
+            h.forEach(function(hed){
+                let th = document.createElement("th");
+                let txt = document.createTextNode(hed);
+                th.appendChild(txt);
+                head.appendChild(th);
+            })
+            table.appendChild(head);
+            
+            let num1 = Number(document.getElementById("number1").value);
+            for(let i = 1; i<=12;i++){
+                let tr = document.createElement("tr");
+                let td1 = document.createElement("td");
+                td1.textContent = num1 + " X " + i;
+                
+                let td2 = document.createElement("td");
+                let result = num1 * i;
+                td2.textContent = result;
+                
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                table.appendChild(tr);
+            }
+            
+            let div1 = document.getElementById("div1");
+            div1.replaceChildren(table);
+        }
+    </script>
+</body>
+</html>

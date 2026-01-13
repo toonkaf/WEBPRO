@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+    <style>
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="img1">
+    <img id="img2">
+    <img id="img3">
+    <img id="img4">
+    <img id="img5">
+    <img id="img6">
+    <br>
+    <button onclick="create()">create</button>
+    <script>
+        create()
+        function create() {
+            for (let i = 1; i < 7; i++) {
+                let im = document.getElementById("img" + i);
+                let r = Math.floor(Math.random() * 10);
+                if (r == 0) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/0.png"
+                }
+                else if (r == 1) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/1.png"
+                }
+                else if (r == 2) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/2.png"
+                }
+                else if (r == 3) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/3.png"
+                }
+                else if (r == 4) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/4.png"
+                }
+                else if (r == 5) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/5.png"
+                }
+                else if (r == 6) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/6.png"
+                }
+                else if (r == 7) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/7.png"
+                }
+                else if (r == 8) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/8.png"
+                }
+                else if (r == 9) {
+                    im.src = "http://webdev.it.kmitl.ac.th/labdocs/lab3/images/9.png"
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+</head>
+
+<body style="font-family: 'Courier New', Courier, monospace;">
+    <center>
+        <h1>User Registration</h1>
+        <div style="width: 500px;">
+            <div style="width: 500px; margin-top: 50px;">
+                <h3 style="text-align: left; margin: auto;">Username: </h3>
+                <input type="text" id="username" name="username" style="width: 100%; font-size: large;">
+            </div>
+            <div style="width: 500px; margin-top: 30px;">
+                <h3 style="text-align: left; margin: auto;">Email: </h3>
+                <input type="email" id="email" name="email" style="width: 100%; font-size: large;"
+                    placeholder="e.g., user@example.com">
+            </div>
+            <div style="width: 500px; margin-top: 30px;">
+                <h3 style="text-align: left; margin: auto;">Phone: </h3>
+                <input type="tel" id="phone" name="phone" style="width: 100%; font-size: large;"
+                    placeholder="e.g., 555-555-5555">
+            </div>
+            <div style="width: 500px; margin-top: 30px;">
+                <h3 style="text-align: left; margin: auto;">Password: </h3>
+                <input type="password" id="password" name="password" style="width: 100%; font-size: large;">
+            </div>
+            <div style="width: 500px; margin-top: 30px;">
+                <h3 style="text-align: left; margin: auto;">Confirm Password: </h3>
+                <input type="password" id="con password" name="con password" style="width: 100%; font-size: large;">
+            </div>
+            <button style="width: 100%; margin-top: 30px; font-size: larger; color: white; background-color: dodgerblue; border-radius: 10px;"onclick="validateForm()">Register</button>
+        </div>
+    </center>
+    <script>
+        function validateForm() {
+
+            let usn = document.getElementById("username").value;
+            if (usn.length < 5) {
+                alert("Username must be filled out and at least 5 characters.");
+                return false;
+            }
+
+            let em = document.getElementById("email").value;
+            if (!validem(em)) {
+                alert("Invalid email address.");
+                return false;
+            }
+
+            let ph = document.getElementById("phone").value;
+            if (!validph(ph)){
+                alert("Invalid phone number.");
+                return false;
+            }
+
+            let pas = document.getElementById("password").value;
+            if (!validpas(pas)){
+                alert("Password length is 8 characters long at least, and it must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character.");
+                return false;
+            }
+
+            let pas2 = document.getElementById("con password").value;
+            if (pas != pas2){
+                alert("Passwords don't match");
+                return false;
+            }
+            alert("Registration completed");
+        }
+
+        function validem(email) {
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+        }
+        function validph(phone) {
+            const regex = /^\d{10}$/;
+            return regex.test(phone);
+        }
+        function validpas(pas) {
+            const pw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+            return pw.test(pas);
+        }
+    </script>
+
+</body>
+
+</html>

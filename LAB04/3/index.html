@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 / 3</title>
+    <style>
+        body{
+            font-family:sans-serif;
+        }
+        table{
+            width: 700px;
+            border-collapse: collapse;
+        }
+        th , td{
+            font-size: 20px;
+            margin-top:10px;
+            border: 1px solid gray;
+            padding: 10px;
+            text-align: center;
+        }
+        .bg{
+            background-color: aqua;
+        }
+        .money{
+            width: 70px;
+        }
+        .txt{
+            width: 140px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>ตารางรายรับ - รายจ่าย</h1>
+        <h2>ยอดคงเหลือ</h2>
+        <h1 id="remain">0</h1>
+        <p>
+            <input id="name" type="text" placeholder="รายการ">
+            <input id="amount" type="text" placeholder="จำนวน">
+            <select id="sel">
+                <option value="00">รายรับ</option>
+                <option value="01">รายจ่าย</option>
+            </select>
+            <input id="day" type="date">
+            <button onclick="addRow()">เพิ่มรายการ</button>
+        </p>
+        <div id="tab"></div>
+    </center>
+
+    <script>
+        const head1 = ["วันที่","รายการ"]
+        const head2 = ["รายรับ","รายจ่าย"]
+        let table = document.createElement("table");
+        table.setAttribute('id','table1');
+        let tr = document.createElement("tr");
+        tr.setAttribute('class','bg');
+
+        head1.forEach(function(h){
+            let head = document.createElement("th");
+            let headtxt = document.createTextNode(h);
+            head.setAttribute('class','txt');
+            head.appendChild(headtxt);
+            tr.appendChild(head);
+        })
+        head2.forEach(function(h){
+            let head = document.createElement("th");
+            let headtxt = document.createTextNode(h);
+            head.setAttribute('class','money');
+            head.appendChild(headtxt);
+            tr.appendChild(head);
+        })
+
+        table.appendChild(tr);
+        
+        let div = document.getElementById("tab");
+        div.appendChild(table);
+
+        function addRow(){
+            let name = document.getElementById("name").value;
+            let amount = document.getElementById("amount").value;
+            let sel = document.getElementById("sel").value;
+            let day = document.getElementById("day").value;
+            let show = document.getElementById("remain");
+            
+            let tr = document.createElement("tr");
+            if (sel == "00"){
+                let result = Number(Number(show.innerText) + Number(amount));
+                let res = document.createTextNode(result);
+                show.replaceChildren(res);
+                let temp = [day,name,amount,0];
+                temp.forEach(function(h){
+                    let td = document.createElement("td");
+                    let tdtxt = document.createTextNode(h);
+                    td.appendChild(tdtxt);
+                    tr.appendChild(td);
+                })
+            }
+            else if (sel == "01"){
+                let result = Number(Number(show.innerText) - Number(amount));
+                let res = document.createTextNode(result);
+                show.replaceChildren(res);
+                let temp = [day,name,0,amount];
+                temp.forEach(function(h){
+                    let td = document.createElement("td");
+                    let tdtxt = document.createTextNode(h);
+                    td.appendChild(tdtxt);
+                    tr.appendChild(td);
+                })
+            }
+            
+            let tab = document.getElementById("table1");
+            tab.appendChild(tr);
+        }
+
+
+    </script>
+</body>
+</html>

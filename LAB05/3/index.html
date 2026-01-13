@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 / 3</title>
+
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .album {
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            height: 90vh;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background-color: FFFFFF;
+            padding: 20px;
+            float: left;
+            width: 100%;
+            height: 90vh;
+            text-align: center;
+            overflow: hidden;
+            min-height: fit-content;
+        }
+
+        .card h1,h2 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .card h4 {
+            margin-top: -10px;
+            color: gray;
+        }
+
+        img {
+            width: 100%;
+            height: 30%;
+            object-fit: cover;
+            border-radius: 20px;
+            /* height: auto; */
+        }
+
+        @media screen and (max-width: 700px) {
+            .album {
+                grid-template-columns: repeat(2, 1fr);
+                height: 180vh;
+                grid-template-rows: auto;
+                gap: 20px;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .album {
+                grid-template-columns: repeat(1, 1fr);
+                height: 360vh;
+                grid-template-rows: auto;
+                gap: 20px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Top Biggest Animal</h1>
+    <h3>Animals take many shapes and forms and come in a great diversity of sizes, from microscopic to the 30 m long
+        blue whale! Whether you measure in terms of weight, height or length, there is no denying some animals are huge
+        in comparison to others in their class.
+    </h3>
+    <div class="album">
+        <div class="card">
+            <img src="GAE.webp" alt="Giant African Elephant"></img>
+            <center>
+                <h2>Giant African Elephant</h2>
+                <h4>The Heaviest Land Animal</h4>
+                <p style="text-align: left;">The African elephant is widely considered to be the largest land animal in the world. It is certainly in the running for being the heaviest land animal as well. They are particularly well-known for their long trunks and prominent tusks, which can grow up to 3 metres long. Adult males can weigh up to 6 tons and stand up to 4 metres tall; females can reach 4.5 metres tall and weigh about 5.4 tons.
+                </p>
+            </center>
+        </div>
+        <div class="card">
+            <img src="BW.webp" alt="Blue Whale"></img>
+            <center>
+                <h2>Blue Whale</h2>
+                <h4>The Largest Animal on Earth</h4>
+                <p style="text-align: left;">The blue whale is widely regarded as the largest animal in the world. Its sheer mass is almost inconceivable, with adults averaging 30 metres long and weighing 200 tons. In terms of its size relative to other mammals, some scientists believe it may even be larger than the dinosaurs that once roamed our planet. Blue whales live in all of the world’s oceans and feed mainly on krill.
+                </p>
+            </center>
+        </div>
+        <div class="card">
+            <img src="GF.webp" alt="Giraffe"></img>
+            <center>
+                <h2>Giraffe</h2>
+                <h4>The Tallest Land Animal</h4>
+                <p style="text-align: left;">Giraffes are easily recognisable due to their long necks and spindly legs. They are considered to be the tallest land animal in the world and have an average height of 4.7 metres. The long necks of Giraffes allow them to reach high levels of vegetation that other animals cannot access. Giraffes can be found in savannah habitats in sub-saharan Africa.
+                </p>
+            </center>
+        </div>
+        <div class="card">
+            <img src="SC.jpg" alt="Saltwater Crocodile"></img>
+            <center>
+                <h2>Saltwater Crocodile</h2>
+                <h4>The Largest Reptile</h4>
+                <p style="text-align: left;">Saltwater Crocodiles are widely considered to be the largest reptiles on earth. Adult males typically measure between 5-6 metres long, but some specimens can grow even larger. Saltwater crocodiles possess a reputation for being aggressive predators and are responsible for numerous attacks on humans and other animals throughout Asia and Australia.
+                </p>
+            </center>
+        </div>
+    </div>
+</body>
+
+</html>

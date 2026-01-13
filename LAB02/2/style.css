@@ -1,0 +1,50 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+table{
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px 0;
+    vertical-align: middle;
+    font-size: 1.1rem;
+}
+
+th{
+    font-weight: bold;
+    font-size: large;
+    padding-bottom: 5px;
+}
+
+.stdID {
+    width: 20px;
+    color: #000;
+}
+
+.stdNAME {
+    width: 200px;
+}
+
+.bar {
+            height: 35px;           /* ความสูงของแท่ง */
+            line-height: 35px;      /* จัดตัวเลขให้อยู่กึ่งกลางแนวตั้ง */
+            padding-left: 10px;     /* ระยะห่างตัวเลขจากขอบซ้าย */
+            font-size: 1.2rem;
+            color: #000;            /* สีตัวอักษรคะแนน */
+            box-sizing: border-box; /* รวม padding เข้าไปในความกว้าง */
+}
+
+/* กำหนดสีของแต่ละแถบตามรูป */
+.bg-gray   { background-color: #7f8c8d; }
+.bg-blue   { background-color: #322dc8; } /* สีน้ำเงินเข้ม */
+.bg-green  { background-color: #16a085; }
+.bg-purple { background-color: #9b59b6; }
+.bg-red    { background-color: #ff0000; }

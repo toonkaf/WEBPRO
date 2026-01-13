@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 01 67070150</title>
+    <style>
+        /*
+        PRI : E35205 
+        SEC1 : FFFFFF
+        SEC2 : 666666
+        SEC3 : 000000
+        */
+        @font-face {
+            font-family: KMITL;
+            src: url('KMITLGO Regular.woff');
+        }
+
+        @font-face {
+            font-family: KMITL_BOLD;
+            src: url('KMITLGO Bold.woff');
+        }
+
+        body,
+        html {
+            font-family: sans-serif;
+            margin: 0 0 50px 0;
+            padding: 0;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .header {
+            font-family: KMITL_BOLD, sans-serif;
+            width: 100%;
+            height: 25vh;
+            padding: 1px 0px 20px 0px;
+            margin: 0 0 0 0;
+            background-color: #E35205;
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 100px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
+        }
+        .header h2 {
+            color: #666666;
+            text-align: right;
+            margin: 0 0 -50px 0;
+            font-size: clamp(50px, 2vw, 70px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
+        }
+
+        .card {
+            font-family: KMITL_BOLD, sans-serif;
+            display: flex;
+            flex-direction: row;
+            background-color: #666666;
+            margin-top: 50px;
+            margin-left: 15%;
+            margin-right: 15%;
+            border-radius: 50px;
+            float: left;
+            width: 70%;
+            height: 30vh;
+            text-align: center;
+            overflow: hidden;
+            min-height: fit-content;
+        }
+
+        .card img {
+            max-width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            /* height: auto; */
+        }
+
+        .card h1 {
+            color: #FFFFFF;
+            text-align: left;
+            font-size: clamp(50px, 10vw, 70px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
+        }
+
+        .cardrec {
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            flex-direction: row;
+            background-color: #E35205;
+            margin-left: 15%;
+            margin-right: 15%;
+            padding-left: 5%;
+            padding-right: 5%;
+            border-radius: 50px;
+            float: left;
+            min-width: fit-content;
+            width: 60%;
+            max-width: 70%;
+            /* height: 30vh; */
+            text-align: center;
+            min-height: fit-content;
+        }
+
+        .cardrecinner {
+            display: flex;
+            flex-direction: column;
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cardrecinner p {
+            color: #FFFFFF;
+            text-align: left;
+            font-size: 2vh;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
+        }
+
+        .cardrecinner a {
+            margin-top: auto;
+            margin-bottom: 10px;
+            color: #000000;
+            font-size: 1vh;
+            /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); */
+            text-align: left;
+            text-decoration: none;
+        }
+
+        .rightside {
+            margin-left: 10px;
+            text-align: left;
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: 80% 20%;
+            grid-template-rows: 100%;
+            flex-direction: column;
+            height: 100%;
+            width: 50%;
+        }
+
+        .rightside button {
+            width: 100%;
+            height: auto;
+            border: none;
+            color: none;
+            background-color: #666666;
+            cursor: pointer;
+            overflow: visible;
+            min-height: fit-content;
+        }
+
+        .rightside img {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .cardcover {
+            min-width: fit-content;
+            min-height: fit-content;
+            display: row;
+            align-items: center;
+            justify-content: center;
+            background-color: none;
+        }
+
+        .cardcover2 {
+            min-width: fit-content;
+            min-height: fit-content;
+            display: row;
+            align-items: center;
+            justify-content: center;
+            background-color: #E35205;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2>67070150 รัชชานนท์ แย้มบู่</h2>
+        <h1>สูตรอาหาร</h1>
+    </div>
+
+    <script>
+        let menu = ["ต้มยำกุ้ง",
+            "ต้มข่าไก่",
+            "แกงเขียวหวาน",
+            "แกงพะแนง",
+            "แกงส้มชะอมกุ้ง",
+            "ผัดกะเพรา",
+            "ผัดไทย",
+            "ผัดซีอิ๊ว",
+            "ส้มตำไทย",
+            "ลาบ"];
+        let menupic = ["recipe00.jpg",
+            "recipe01.jpg",
+            "recipe02.jpg",
+            "recipe03.jpg",
+            "recipe04.jpg",
+            "recipe05.jpg",
+            "recipe06.jpg",
+            "recipe07.jpg",
+            "recipe08.jpg",
+            "recipe09.jpg"];
+        // ชื่อเมนู:[วัตถุดิบ, วิธีทำ, ลิงก์ภาพ, ลิงก์วิธีทำ]
+        let menudict = {"ต้มยำกุ้ง": ["1.กุ้ง 10 ตัว\n2.ยอดมะพร้าว 50 กรัม\n3.เห็ดฟาง 2 ขีด\n4.มะนาว 3 ลูก \n5.น้ำปลา 2 ช้อนโต๊ะ \n6.พริกขี้หนูสวน 3 ช้อนโต๊ะ \n7.น้ำสะอาด 3 ลิตร\n8.ตะไคร้ 2 ต้น \n9.ใบมะกรูด 3 ใบ \n10.ผักชี",
+            "1.แกะเปลือกกุ้ง มันกุ้ง และตัวกุ้งแยกกันไว้ จากนั้นผ่าหลังตัวกุ้งและเอาเส้นกลางออก แล้วล้างน้ำให้สะอาด\n2.นำมันกุ้งที่ได้มาผัดกับน้ำมันพืชเล็กน้อยจนแตกมันแล้วพักไว้\n3.นำเปลือกกุ้งมาคั่วด้วยไฟแรงพร้อมใบมะกรูดและท่อนตะไคร้ให้สุกหอม แล้วเติมน้ำลงไป ปรุงรสด้วยเกลือ ต้มจนเดือด จึงค่อยช้อนนำเปลือกกุ้งออก\n4.ใส่เนื้อกุ้งลงไป ตามด้วยเห็ดฟาง และยอดมะพร้าวแกะสลักเป็นใบไม้ เมื่อทุกอย่างเริ่มสุก เร่งไฟใส่ตะไคร้ซอย ใบมะกรูดปรุงรสด้วยน้ำปลา มันกุ้งที่ผัดเตรียมไว้ พริกขี้หนูสวนโขลกหยาบ แล้วปิดไฟ บีบมะนาว ก่อนจัดเสิร์ฟวางผักชีเพิ่มความสวยงาม",
+            "https://hot-thai-kitchen.com/wp-content/uploads/2013/03/tom-yum-goong-blog.jpg",
+            "https://www.wongnai.com/recipes/old-fashioned-shrimp-tom-yum-soup"],
+            "ต้มข่าไก่": ["1.ไก่หั่นชิ้น 150 กรัม\n2.เครื่องในไก่ 150 กรัม\n3.มะเขือเทศหั่นเสี้ยว 1 ลูก\n4.เห็ดฟางผ่าครึ่ง 7-8 ดอก\n5.เครื่องปรุงต้มข่าแบบผง 1 ซอง\n6.ตะไคร้ทุบเบาๆ หั่นเป็นท่อนๆ 1 ต้น\n7.ใบมะกรูดฉีก 3-4 ใบ\n8.พริกแห้งทอด 5 เม็ด\n9.กะทิ 1.5 ถ้วย\n10.พริกขี้หนูบุบหยาบๆ 1 ช้อนโต๊ะ\n11.น้ำมะนาว 3 ช้อนโต๊ะ\n12.น้ำปลา 2 ช้อนโต๊ะ\n13.น้ำมะขามเปียก 1 ช้อนโต๊ะ",
+            "1.นำกระทิใส่หม้อตั้งไฟ ใส่ผงปรุงรสต้มข่า ตะไคร้ ใบมะกรูด พริกแห้งทอด ปล่อยให้เดือด มีกลิ่นหอม\n2.ใส่ไก่ เครื่องในไก่ รอจนสุก\n3.ใส่มะเขือเทศ เห็ดฟาง ปรุงรสด้วยน้ำมะขามเปียก น้ำปลา ให้ออกรสเปรี้ยวๆเค็มนิดๆ\n4.ก่อนเสิร์ฟปรุงด้วยน้ำมะนาวกับพริกขี้หนูบุบหยาบๆ",
+            "https://hot-thai-kitchen.com/wp-content/uploads/2014/06/Tom-kha-gai-new-sq.jpg",
+            "https://www.wongnai.com/recipes/ugc/1c2fd2d6f1174c77bda59ea2ce37fc73"],
+            "แกงเขียวหวาน": ["1.เนื้อไก่ 300 กรัม\n2.น้ำพริกแกงเขียวหวาน 4 ช้อนโต๊ะ\n3.มะเขือเปราะ 8 ลูก\n4.พริกชี้ฟ้าสีแดง 2 เม็ด\n5.พริกอ่อน 2 เม็ด\n6.ใบมะกรูด 8-9 ใบ\n7.ใบโหระพา 1 ถ้วย\n8.น้ำปลาดี 2 ช้อนโต๊ะ\n9.น้ำตาลปี๊บ 1 ช้อนโต๊ะ\n10.กะทิ 1 ลิตร",
+            "1.เอาหัวกะทิใส่กระทะ ตั้งไฟกลางแล้วก็ใส่น้ำพริกแกงลงไป ผัดไปเรื่อย ๆ รอให้กะทิแตกมัน\n2.ใส่เนื้อไก่ที่หั่นไว้ลงผัดกับน้ำพริกแกง ฉีกใบมะกรูดลงไปเพื่อความหอม ผัดสักพักก็ใส่หางกะทิลงไป คนให้เข้ากัน รอให้เดือด\n3.ใส่มะเขือเปราะ ตามด้วยพริกชี้ฟ้าแดงและพริกอ่อน คนให้เข้ากัน แล้วปรุงรสด้วยน้ำตาลปี๊บ น้ำปลา รอให้เดือดและมะเขือสุกดี สุดท้ายใส่ใบโหระพา",
+            "https://cooking.kapook.com/view285360.html",
+            "https://cooking.kapook.com/view285360.html"],
+            "แกงพะแนง": ["*เครื่องแกง*\n1.พริกชี้ฟ้าแดงแห้งใหญ่ 5-6 เม็ด\n2.พริกขี้หนูแดงแห้งเล็ก 4 เม็ด\n3.กระเทียม 2 ช้อนโต๊ะ\n4.หอมแดง 3 ช้อนโต๊ะ\n5.ตะไคร้ซอย 4 ช้อนโต๊ะ\n6.ข่า 1 ช้อนโต๊ะ\n7.ผิวมะกรูด 1/2 ช้อนโต๊ะ\n8.กะปิ 1/3 ช้อนโต๊ะ\n9.เกลือ 1 ช้อนชา\n10.รากผักชี 1 ช้อนโต๊ะ\n11.ยี่หร่า 1 ช้อนโต๊ะ\n12.ลูกผักชี 1 ช้อนโต๊ะ\n13.ถั่วลิสง 1 ช้อนโต๊ะ\n\n*วัตถุดิบพะแนงหมู*\n1.สันคอหมูสไลด์ 500 กรัม\n2.พริกชี้ฟ้าแดง 2 เม็ด\n3.ใบมะกรูด 5 ใบ\n4.หัวกะทิ 500 มิลลิลิตร\n5.หางกะทิ 300 มิลลิลิตร\n6.พริกแกงพะแนง 2 ½ ช้อนโต๊ะ\n7.น้ำตาลปี๊บ 1 ½ ช้อนโต๊ะ\n8.น้ำปลา 2 ½ ช้อนโต๊ะ",
+            "*พริกแกงพะแนง*\n1.นำพริกชี้ฟ้าแดงแห้งใหญ่ พริกขี้หนูแดงแห้งเล็ก มาหั่นเป็นชิ้นเล็ก ๆ เสร็จแล้ว แกะเอาเม็ดพริกออก แช่น้ำทิ้งไว้ ในนิ่มลง\n2.ใช้เครื่องปั่น หรือครกกับสาก ใส่ลูกผักชี ยี่หร่า ตำให้เข้ากัน จากนั้น ใส่รากผักชี ตะไคร้ ข่า ตำให้ละเอียด\n3.เสร็จแล้ว ใส่กระเทียม หอมแดง ถั่วลิสง ผิวมะกรูด แล้วใส่เกลือลงไปหยิบมือ เพื่อช่วยดูดซับน้ำจากส่วนผสม และตำได้ง่ายขึ้น\n4.นำพริกชี้ฟ้าแดงแห้งใหญ่ พริกขี้หนูแดงแห้งเล็ก มาบีบน้ำออก แล้วใส่ลงไป ตำให้ละเอียด\n5.ใส่กะปิลงไป ตำให้เข้ากันจนเป็นเนื้อเดียว เป็นอันเสร็จ\n\n*วิธีทำพะแนงหมู*\n1.ฉีกใบมะกรูดออก แล้วซอยเป็นเส้นเล็ก ๆ เตรียมไว้ เช่นเดียวกับพริกชี้ฟ้าแดง โดยพริกชี้ฟ้าแดง ให้คว้านเอาเมล็ดออกด้วย\n2.ล้างเนื้อหมูให้สะอาด จากนั้น หั่นหรือสไลด์เป็นชิ้นเล็ก ๆ พอดีคำ\n3.ตั้งกระทะ หรือ หม้อ ใส่หัวกะทิลงไป แล้วเปิดไฟแรง คนและรอจนกว่าจะเดือด พอกะทิเริ่มเดือดแล้ว ให้ลดเป็นไฟกลางค่อนไฟอ่อน ผัดไปเรื่อย ๆ จนกว่าหัวกะทิจะแตกมัน\n4.พอหัวกะทิแตกมันดีแล้ว ให้ใส่พริกแกง พะแนง ลงไป ผัดให้เข้ากันชุดทำแกงพะแนง\n5.ใส่เนื้อหมูลงไป ผัดให้เนื้อหมูสุก และคนให้แกงเข้าเนื้อ จากนั้น เติมหางกะทิ แล้วปรุงรสด้วยน้ำตาลโตนด น้ำปลา คนให้เข้ากัน\n6.โรยใบมะกรูดซอย พริกชี้ฟ้าแดงซอย",
+            "https://cooking.kapook.com/view76554.html",
+            "https://recipe.sgethai.com/recipes/panang-curry-with-pork/"],
+            "แกงส้มชะอมกุ้ง": ["1.ไข่ไก่ 2 ฟอง\n2.ชะอมเด็ดเป็นใบ 1 ถ้วย\n3.น้ำพริกแกงส้ม 1/2 ถ้วย\n4.หอมแดง ปอกเปลือก 5 หัว\n5.กระชาย 100 กรัม\n6.ปลาทูน่ากระป๋องในน้ำเกลือ หรือน้ำแร่ 1 กระป๋อง\n7.น้ำเปล่า 5 ถ้วย\n8.น้ำปลา 5 ช้อนโต๊ะ\n9.เกลือทะเล 1 ช้อนชา\n10.น้ำตาลปี๊บ 1 ช้อนโต๊ะ\n11.น้ำมะขามเปียก 1 ถ้วย\n12.กุ้งสด ปอกเปลือกผ่าหลัง 10 ตัว\n13.น้ำมันพืช สำหรับทอดไข่เจียว",
+            "1.ตีไข่ไก่พอแตก ใส่ชะอมเด็ดลงไป ปรุงรสด้วยน้ำปลาเล็กน้อย ตีผสมให้พอเข้ากัน\n2.ใส่น้ำมันพืชลงในกระทะ พอร้อนใส่ไข่ลงไปทอดจนสุก ตักขึ้นสะเด็ดน้ำมัน หั่นเป็นชิ้น ๆ ใส่ลงในถ้วย หรือหม้อสำหรับเสิร์ฟ เตรียมไว้\n3.โขลกน้ำพริกแกงส้ม หอมแดง และเนื้อปลาทูน่าเข้าด้วยกันจนละเอียด หรือนำไปปั่นด้วยเครื่องปั่น\n4.ใส่น้ำเปล่าลงในหม้อ ตักน้ำพริกแกงส้มที่โขลกลงไปคนให้ละลาย จากนั้นเปิดไฟ ต้มจนเดือด ปรุงรสด้วยน้ำปลา เกลือ น้ำตาลปี๊บ และน้ำมะขามเปียก รอจนเดือดแล้วชิมรสตามชอบ\n5.ใส่กุ้งสดลงไปต้มพอสุก ปิดไฟ ตักใส่ลงในถ้วยที่รองด้วยไข่เจียวชะอม พร้อมเสิร์ฟ",
+            "https://api2.krua.co/wp-content/uploads/2025/07/RT1920_Gallery_-08.jpg",
+            "https://recipe.sgethai.com/recipes/shrimp-sour-soup-with-acacia/"],
+            "ผัดกะเพรา": ["1.น้ำมันรำข้าว 1​ ช้อนโต๊ะ\n2.กระเทียมสับ 1​ ช้อนโต๊ะ\n3.พริกแดงตำ ตามชอบ\n4.หมูบด 2​ ขีดก้อพอ\n5.น้ำ นิดหน่อย\n6.ซอสหอยนางรม 1 ช้อนครึ่ง\n7.น้ำปลา 1 ​ช้อนโต๊ะ\n8.น้ำตาลทราย 1​ ช้อนชา\n9.ใบกะเพรา ตามชอบ",
+            "1.เทน้ำมันลงในกระทะตามด้วยกระเทียมสับพริกแดงตำ\n2.ผัดจนมีกลิ่นหอมผัดจนหอมแล้วใส่หมูบดผัดจนหมูสุกใส่น้ำหน่อยนึงปรุงรสด้วย​ ซอสหอยนางรม​ น้ำปลาน้ำตาลทรายผัดให้เข้ากัน\n3.ปิดไฟใส่ใบกะเพรา เสร็จตักใส่จาน",
+            "https://i.ytimg.com/vi/noQTuNaSItI/maxresdefault.jpg",
+            "https://www.wongnai.com/recipes/ugc/c1e3ed7ad25c4c509bc17ded10674ce7"],
+            "ผัดไทย": ["*ผัดไทย*\n1.กุ้งสด 5 ตัว\n2.เต้าหู้แข็ง 1/4 ก้อน\n3.ไข่ไก่ 1 ฟอง\n4.ใบกุยช่าย 1 หยิบมือ\n5.หอมแดงซอย 4 หัว\n6.กุ้งแห้ง หรือกุ้งฝอย 1 ช้อนชา\n7.ไชโป๊วเค็ม 1 ช้อนโต๊ะ\n8.เส้นจันท์ 100 กรัม\n9.ถั่วลิสงคั่ว 1 ช้อนโต๊ะ\n10.ถั่วงอก 1 หยิบมือ\n11.มะนาว 1 ลูก\n12.พริกป่น 1 ช้อนชา\n13.น้ำมันพืช (สำหรับผัด) 2 ช้อนโต๊ะ\n\n*วัตถุดิบน้ำซอสผัดไทย*\nผงชูรส 1/4 ช้อนชา\nน้ำตาลปี๊บ 25 กรัม\nน้ำมะขามเปียก 30 กรัม\nน้ำเปล่า 20 กรัม\nน้ำปลา 20 กรัม",
+            "1.เคี่ยวน้ำตาลปี๊บ น้ำมะขามเปียก น้ำปลา น้ำเปล่า และผงชูรส จนละลาย เป็นซอสเข้มข้น ประมาณ 5 นาที ปิดเตา พักเตรียมไว้\n2.นำเส้นจันท์ ไปแช่น้ำ ทิ้งไว้ประมาณ 15 นาที เตรียมไว้\n3.ตั้งกระทะให้ร้อน ใส่น้ำมันพืชเล็กน้อย พอน้ำมันร้อน ใส่กุ้งสดลงไปย่าง จนกุ้งเริ่มสุก ตักขึ้นใส่จาน เตรียมไว้\n4.ใช้กระทะใบเดิมที่ย่างกุ้ง ผัดเต้าหู้ หอมแดง ให้เข้ากัน และใส่เส้นจันท์เข้ากันเบา ๆ แล้วใช้ตะหลิวเขี่ยเส้นไปไว้ข้างกระทะ จากนั้น ตอกไข่ไก่ลงไป ผัดให้เข้ากัน\n5.จากนั้น ใส่น้ำซอสผัดไทยผัดให้เข้ากันจนเส้นเหนียวนุ่มดี และใส่กุ้งแห้ง หรือกุ้งฝอย ไชโป๊วเค็ม กุ้งย่าง และใส่ถั่วงอก ใบกุยช่าย ผัดให้เข้ากัน ปิดเตา\n6.ตักผัดไทยใส่จาน วางกุ้งตกแต่งไว้ด้านบน เสิร์ฟพร้อมผัดสด ถั่วลิสงคั่วบด พริกป่น และมะนาว พร้อมทาน",
+            "https://upload.wikimedia.org/wikipedia/commons/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg",
+            "https://recipe.sgethai.com/recipes/pad-thai/"],
+            "ผัดซีอิ๊ว": ["1.เส้นใหญ่ 350 กรัม\n2.ไก่หั่นเป็นชิ้น 200 กรัม\n3.ไข่ไก่ 2 ฟอง\n4.คะน้าหั่นท่อน 3 ต้น\n5.กระเทียมสับ 1 ช้อนโต๊ะ\n6.ซีอิ๊วดำ 2 ช้อนโต๊ะ\n7.น้ำปลา 1 ช้อนโต๊ะ\n8.ซอสปรุงรส 2 ช้อนชา\n9.ซีอิ๊วขาว 1 ช้อนโต๊ะ\n10.น้ำมันพืช\n11.มะนาว\n12.พริกไทย",
+            "1.นำเส้นใหญ่มาคลุกกับซีอิ๊วดำ คลุกให้ทั่วพักไว้\n2.ตั้งกระทะเจียวกระเทียม ใส่ไก่ลงไปผัดให้ไก่สุก ตอกไข่ลงไปใช้ตะหลิวยีใข่ให้แตก ทิ้งไว้ให้ไข่เซ็ตตัวสักครู่แล้วผัดคลุกเคล้ากับไก่\n3.จากนั้นใส่เส้นใหญ่ที่คลุกกับซีอิ๊วเตรียมไว้ลงไปผัด ปรุงรสด้วยซีอิ๊วขาว ซอสปรุงรส น้ำปลา น้ำตาลทรายผัดให้เข้ากัน\n4.ใส่คะน้าลงไปผัดต่อให้คะน้าสุก\n5.ตักใส่จาน บีบมะนาวหน่อย โรยพริกไทยนิด",
+            "https://img.wongnai.com/p/1920x0/2019/04/17/998894b9210947dfaafb59c21cad48dc.jpg",
+            "https://www.wongnai.com/recipes/ugc/ff5ca17317bd4cf880b0371c3b93d8d3"],
+            "ส้มตำไทย": ["1.​มะละกอดิบ 100 กรัม\n2.ถั่วฝักยาว 2 ฝัก\n3.มะเขือเทศสีดา 3 ลูก\n4.กระเทียมไทย 3 กรัม\n5.พริกแดง 3 เม็ด\n6.น้ำตาลปี๊บ 25 กรัม\n7.น้ำปลา 30 กรัม\n8.ผงชูรส 5 กรัม\n9.น้ำมะนาว 1 ลูก\n10.กุ้งแห้ง 5 กรัม\n11.ถั่วลิสงคั่ว 10 กรัม",
+            "1.ปอกมะละกอ ล้างด้วยน้ำเปล่า เพื่อล้างยางออก\n2.ขูดหรือสับมะละกอออกเป็นเส้น\n3.เตรียมครก ตำพริกสด กระเทียม ให้แหลกพอประมาณ\n4.ใส่ถั่วฝักยาว มะเขือเทศ น้ำตาลปี๊บ น้ำมะนาว คลุกให้เข้ากัน\n5.ใส่ถั่วลิสง กุ้งแห้ง ผงชูรส คลุกเคล้าอีกรอบ แล้วชิมรส\n6.ใส่เส้นมะลอกอสับลงไป คลุกเคล้ากับเครื่องปรุงรสทั้งหมด\n7.ตักส้มตำไทยใส่จาน โรยถั่วลิสงคั่ว กุ้งแห้ง เป็นอันเสร็จ",
+            "https://www.unileverfoodsolutions.co.th/th/chef-inspiration/simple-tips-for-great-flavour/somtum-green-papaya-salad-recipes/jcr:content/parsys/content-aside-footer/tipsandadvice/image.img.jpg/1695118621402.jpg",
+            "https://recipe.sgethai.com/recipes/som-tum-thai/"],
+            "ลาบ": ["1.หมูบด 200 กรัม\n2.หอมแดง 40 กรัม\n3.ต้นหอม 1 ต้น\n4.สะระแหน่ 1 หยิบมือ\n5.ผักชีฝรั่ง 4 ใบ\n6.น้ำปลา 1 ช้อนโต๊ะ\n7.น้ำตาลทราย 1/2 ช้อนชา\n8.น้ำมะนาว 1 ช้อนโต๊ะ\n9.พริกป่น 1 ช้อนโต๊ะ\n10.ข้าวคั่ว 2 ช้อนโต๊ะ\n11.น้ำเปล่า 1/2 ถ้วยตวง",
+            "1.ตั้งไฟกลาง ใส่น้ำเปล่าในกระทะ พอน้ำเริ่มร้อน ใส่หมูสับลงไป รวนหมูให้สุก เสร็จแล้ว ยกขึ้นเตรียมปรุง\n2.ใส่เครื่องปรุงทั้งหมด น้ำปลา น้ำตาลทราย พริกป่น น้ำมะนาว คนส่วนผสมให้เข้ากัน\n3.ใส่ข้าวคั่ว ชิมรส เมื่อรสชาติได้แล้ว ใส่ ผักชีฝรั่ง ต้นหอม สะระแหน่ ตามชอบ เป็นอันเสร็จ",
+            "https://static.thairath.co.th/media/dFQROr7oWzulq5Fa6rpMOnZ7qvx5h2vIBvenPj81tAZcIkzjz19kfGNlOmCbZrvSXTf.jpg",
+            "https://recipe.sgethai.com/recipes/spicy-minced-pork/"]
+        };
+
+        function showRecipe(i) {
+            let btn = document.getElementById("btn" + i);
+            let cover = document.getElementById("cover" + i);
+            if (btn.children[0].alt != "Drop") {
+                // hide
+                let recipeDiv = document.getElementById("recipe" + i);
+                cover.removeChild(recipeDiv);
+                btn.children[0].alt = "Drop";
+                btn.children[0].src = "drop.png";
+            } else {
+                // show
+                let card = document.createElement("div");
+                card.className = "cardrec";
+                card.id = "recipe" + i;
+
+                let cardInner1 = document.createElement("div");
+                cardInner1.className = "cardrecinner";
+                let ingredients = document.createElement("p");
+                ingredients.innerText = "วัตถุดิบ:\n" + menudict[menu[i]][0];
+                cardInner1.appendChild(ingredients);
+                
+                let link = document.createElement("a");
+                link.href = menudict[menu[i]][2];
+                let linkText = document.createTextNode("แหล่งที่มารูปภาพ: " + menudict[menu[i]][2]);
+                link.appendChild(linkText);
+                cardInner1.appendChild(link);
+                
+                let cardInner2 = document.createElement("div");
+                cardInner2.className = "cardrecinner";
+                
+                let instructions = document.createElement("p");
+                instructions.innerText = "วิธีทำ:\n" + menudict[menu[i]][1];
+                cardInner2.appendChild(instructions);
+                
+                let link2 = document.createElement("a");
+                link2.href = menudict[menu[i]][3];
+                cardInner2.appendChild(link2);
+                let linkText2 = document.createTextNode("แหล่งที่มาวิธีทำ: " + menudict[menu[i]][3]);
+                link2.appendChild(linkText2);
+                
+                card.appendChild(cardInner1);
+                card.appendChild(cardInner2);
+                cover.appendChild(card);
+                btn.children[0].alt = "drop-2";
+                btn.children[0].src = "drop-2.png";
+
+            }
+        }
+
+        for (let i = 0; i < 10; i++) {
+            let cover = document.createElement("div");
+            cover.className = "cardcover";
+            cover.id = "cover" + i;
+
+            let card = document.createElement("div");
+            card.className = "card";
+            card.id = menu[i];
+
+            let img = document.createElement("img");
+            img.src = menupic[i];
+            img.alt = menu[i];
+            img.style.width = "100%";
+            img.style.borderRadius = "50px";
+
+            let rightside = document.createElement("div");
+            rightside.className = "rightside";
+
+            let h1 = document.createElement("h1");
+            h1.innerText = menu[i];
+
+            let button = document.createElement("button");
+            button.id = "btn" + i;
+            button.setAttribute("onclick", "showRecipe(" + i + ")");
+            let buttonImg = document.createElement("img");
+            buttonImg.src = "drop.png";
+            buttonImg.alt = "Drop";
+            button.appendChild(buttonImg);
+
+            rightside.appendChild(h1);
+            rightside.appendChild(button);
+
+            card.appendChild(img);
+            card.appendChild(rightside);
+
+            cover.appendChild(card);
+
+            document.body.appendChild(cover);
+        }
+
+    </script>
+</body>
+
+</html>

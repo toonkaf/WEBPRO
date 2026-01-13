@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 / 1</title>
+
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            background-color: FFFFFF;
+            border-radius: 5px solid #000;
+            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.6);
+            margin: 10px 1.25% 0px 0px;
+            padding: 20px;
+            float: left;
+            width: 23.75%;
+            height: fit-content;
+            min-height: 400px;
+        }
+
+        .card h1 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .card h4 {
+            padding-top: 10px;
+        }
+
+        .card a {
+            margin-top: auto;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media screen and (max-width:700px) {
+
+            .card {
+                width: 100%;
+                min-height: fit-content;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Top 10 Programming Languages in 2025</h1>
+    <h4>The programming landscape is evolving rapidly, with certain languages dominating due to their versatility,
+        demand, and alignment with emerging technologies. Below are the top 10 programming languages projected to lead
+        in 2025, based on popularity, job demand, and future trends.
+    </h4>
+    <br>
+    <h2>Languages</h2>
+    <div class="card">
+        <h1>Python</h1>
+        <center>
+            <p style="text-align: left;">Python remains the most popular language due to its simplicity, readability,
+                and extensive libraries. It is widely used in data science, machine learning, web development, and
+                automation.
+            </p>
+        </center>
+        <a href="#">Read more →</a>
+    </div>
+    <div class="card">
+        <h1>JavaScript</h1>
+        <center>
+            <p style="text-align: left;">JavaScript is essential for web development, powering both front-end (via
+                frameworks like React) and back-end (via Node.js).
+            </p>
+        </center>
+        <a href="#">Read more →</a>
+    </div>
+    <div class="card">
+        <h1>Java</h1>
+        <center>
+            <p style="text-align: left;">Java remains a staple for enterprise applications, Android development, and
+                large-scale systems. Its platform independence and robust frameworks like Spring make it a favorite
+                among enterprises.
+            </p>
+        </center>
+        <a href="#">Read more →</a>
+    </div>
+    <div class="card">
+        <h1>C++</h1>
+        <center>
+            <p style="text-align: left;">C++ is a powerful language used in system/software development, game
+                development, and performance-critical applications. It offers low-level memory control and high
+                performance.
+            </p>
+        </center>
+        <a href="#">Read more →</a>
+    </div>
+</body>
+
+</html>

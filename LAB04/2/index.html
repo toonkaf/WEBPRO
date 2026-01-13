@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 / 2</title>
+    <style>
+        body{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: large;
+        }
+
+        input , button , select{
+            font-size: large;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+
+    <script>
+        const eng = ["First Name:","Last Name:"];
+        const Countryeng = ["Choose Country","Thailand","Vietnam","Laos","Malaysia","Singapore","Philippines","Myanmar","Cambodia","Brunei"];
+        const th = ["ชื่อ:","นามสกุล:"];
+        const Countryth = ["เลือกประเทศ","ไทย","เวียดนาม","ลาว","มาเลเซีย","สิงคโปร","ฟิลิปปินส์","เมียนมาร์","กัมพูชา","บรูไน"];
+        thUI();
+        function thUI(){
+            let form = document.createElement("form");
+            th.forEach(function(t){
+                let p = document.createElement("p");
+                let lab = document.createElement("label");
+                let labtxt = document.createTextNode(t);
+                lab.appendChild(labtxt);
+                let labin = document.createElement("input");
+                p.appendChild(lab);
+                p.appendChild(labin);
+                form.appendChild(p);
+            });
+
+            let p = document.createElement("p");
+            let lab = document.createElement("label");
+            let labtxt = document.createTextNode("ประเทศ:");
+            lab.appendChild(labtxt);
+            p.appendChild(lab);
+            let sel = document.createElement("select");
+            Countryth.forEach(function(t){
+                let opt = document.createElement("option");
+                let opttxt = document.createTextNode(t);
+                opt.appendChild(opttxt);
+                sel.appendChild(opt);
+            });
+            p.appendChild(sel);
+
+            form.appendChild(p);
+
+            let btn = document.createElement("button");
+            btn.setAttribute('onclick','engUI();');
+            let btntxt = document.createTextNode("เปลี่ยนเป็นภาษาอังกฤษ");
+            btn.appendChild(btntxt);
+
+            let di = document.createElement("div");
+            di.appendChild(form);
+            di.appendChild(btn);
+
+            let div = document.getElementById("div1");
+            div.replaceChildren(di);
+        }
+
+        function engUI(){
+            let form = document.createElement("form");
+            eng.forEach(function(t){
+                let p = document.createElement("p");
+                let lab = document.createElement("label");
+                let labtxt = document.createTextNode(t);
+                lab.appendChild(labtxt);
+                let labin = document.createElement("input");
+                p.appendChild(lab);
+                p.appendChild(labin);
+                form.appendChild(p);
+            });
+
+            let p = document.createElement("p");
+            let lab = document.createElement("label");
+            let labtxt = document.createTextNode("Country:");
+            lab.appendChild(labtxt);
+            p.appendChild(lab);
+            let sel = document.createElement("select");
+            Countryeng.forEach(function(t){
+                let opt = document.createElement("option");
+                let opttxt = document.createTextNode(t);
+                opt.appendChild(opttxt);
+                sel.appendChild(opt);
+            });
+            p.appendChild(sel);
+
+            form.appendChild(p);
+
+            let btn = document.createElement("button");
+            btn.setAttribute('onclick','thUI();');
+            let btntxt = document.createTextNode("Change to Thai");
+            btn.appendChild(btntxt);
+
+            let di = document.createElement("div");
+            di.appendChild(form);
+            di.appendChild(btn);
+
+            let div = document.getElementById("div1");
+            div.replaceChildren(di);
+        }
+    </script>
+</body>
+</html>

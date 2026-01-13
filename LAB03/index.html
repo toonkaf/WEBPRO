@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+
+        button{
+            background-color: rgb(109, 109, 247);
+            color: white;
+            border-color: white;
+            border-radius: 10px;
+            padding: 2px;
+            width: 100px;
+            height: 30px;
+        }
+
+        th{
+            background-color: lightgray;
+            width: 100px;
+        }
+
+        td{
+            border-color: lightgray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>ระบบตัดเกรด</h1>
+    <center>
+    <table>
+        <tr>
+            <th>ลำดับ</th>
+            <th>ชื่อ</th>
+            <th>คะแนน</th>
+            <th>เกรด</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>สมชาย</td>
+            <td id="std-sc-01"></td>
+            <td id="std-g-01"></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>สมหญิง</td>
+            <td id="std-sc-02"></td>
+            <td id="std-g-02"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>สมศรี</td>
+            <td id="std-sc-03"></td>
+            <td id="std-g-03"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>สมปอง</td>
+            <td id="std-sc-04"></td>
+            <td id="std-g-04"></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>สมเกียรติ</td>
+            <td id="std-sc-05"></td>
+            <td id="std-g-05"></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>สมบัติ</td>
+            <td id="std-sc-06"></td>
+            <td id="std-g-06"></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>สมฤดี</td>
+            <td id="std-sc-07"></td>
+            <td id="std-g-07"></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>สมจิตร</td>
+            <td id="std-sc-08"></td>
+            <td id="std-g-08"></td>
+        </tr>
+    </table>
+    <button style="margin-top: 10px;" onclick="calcg()">คำนวณเกรด</button>
+    </center>
+
+<script>
+    let std = ["std-sc-01",
+        "std-sc-02",
+        "std-sc-03",
+        "std-sc-04",
+        "std-sc-05",
+        "std-sc-06",
+        "std-sc-07",
+        "std-sc-08"]
+    let stdg = ["std-g-01",
+        "std-g-02",
+        "std-g-03",
+        "std-g-04",
+        "std-g-05",
+        "std-g-06",
+        "std-g-07",
+        "std-g-08"]
+    
+    std.forEach(function(s){
+        document.getElementById(s).innerHTML = Math.floor(Math.random() * 61)+40;
+    })
+
+    function calcg(){
+        for(let i = 0; i < 8; i++ ){
+            let temp = parseInt(document.getElementById(std[i]).innerText);
+            if (temp >= 80){
+                document.getElementById(stdg[i]).innerHTML = "A";
+            }
+            else if (temp >= 70){
+                document.getElementById(stdg[i]).innerHTML = "B";
+            }
+            else if (temp >= 60){
+                document.getElementById(stdg[i]).innerHTML = "C";
+            }
+            else if (temp >= 50){
+                document.getElementById(stdg[i]).innerHTML = "D";
+            }
+            else{
+                document.getElementById(stdg[i]).innerHTML = "F";
+            }
+        }
+    }
+
+</script>
+
+</body>
+
+</html>
