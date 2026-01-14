@@ -28,6 +28,7 @@
             margin: 0 0 50px 0;
             padding: 0;
             scrollbar-width: none;
+            width: 100%;
         }
 
         body::-webkit-scrollbar {
@@ -102,12 +103,13 @@
             padding-right: 5%;
             border-radius: 50px;
             float: left;
-            min-width: fit-content;
-            width: 60%;
-            max-width: 70%;
+            /* min-width: fit-content; */
+            width: fit-content;
+            max-width: 60%;
             /* height: 30vh; */
             text-align: center;
             min-height: fit-content;
+            overflow: hidden;
         }
 
         .cardrecinner {
@@ -121,7 +123,7 @@
         .cardrecinner p {
             color: #FFFFFF;
             text-align: left;
-            font-size: 2vh;
+            font-size: 3vh;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 5);
         }
 
@@ -129,7 +131,10 @@
             margin-top: auto;
             margin-bottom: 10px;
             color: #000000;
-            font-size: 1vh;
+            font-size: 2vh;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            width: 100%;
             /* text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); */
             text-align: left;
             text-decoration: none;
@@ -166,9 +171,8 @@
         }
 
         .cardcover {
-            min-width: fit-content;
+            max-width: 100%;
             min-height: fit-content;
-            display: row;
             align-items: center;
             justify-content: center;
             background-color: none;
