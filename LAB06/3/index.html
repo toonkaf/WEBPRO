@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB6 / 3</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        function exam(data){
+            let txt = "<form>";
+            let no = 1;
+            data.map(ex =>{
+                txt += `<p>${no}. ${ex.question}</p>
+                        <input type="radio" name="q${no}" value="a" ${ex.answers.correct == "a"?"checked" : ""}>
+                        <label>A. ${ex.answers.a}</label>
+                        <br>
+                        <input type="radio" name="q${no}" value="b" ${ex.answers.correct == "b"?"checked" : ""}>
+                        <label>B. ${ex.answers.b}</label>
+                        <br>
+                        <input type="radio" name="q${no}" value="c" ${ex.answers.correct == "c"?"checked" : ""}>
+                        <label>C. ${ex.answers.c}</label>
+                    `;
+                no++;
+            });
+            txt += "</form>";
+            document.body.innerHTML = txt;
+        }
+
+        fetch('questionAnswerData.json')
+        .then(response => response.json())
+        .then(data => exam(data))
+        .catch(error => console.log("error",error));
+    </script>
+</body>
+</html>

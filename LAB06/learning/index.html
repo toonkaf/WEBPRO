@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB6 JSON</title>
+</head>
+
+<body>
+    <!-- <p id="out"></p> -->
+    <div id="div1"></div>
+
+    <!-- <form id="myForm">
+    <div><label for='FirstName'>First Name:</label>
+        <input type="text" id="FirstName" name="FirstName" />
+    </div>
+    <div><label for='LastName'>Last Name:</label>
+        <input type="text" id="LastName" name="LastName" />
+    </div>
+    <div><label for='Country'>Country:</label>
+        <select id="Country" name="Country">
+            <option value="000" selected="selected">-Select-</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Laos">Laos</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Myanmar">Myanmar</option>
+            <option value="Brunei">Brunei</option>
+            <option value="Indonesia">Indonesia</option>
+        </select>
+    </div> -->
+    <!-- </form> -->
+    <!-- <button onclick="SaveForm()">Save data</button>
+    <button onclick="LoadData()">Show data</button> -->
+
+    <script>
+        // let person = {
+        //         "firstname":"John",
+        //         "lastname":"Doe",
+        //         "age":30,
+        //         "cars":[ "Toyota", "BMW", "BVD", "Honda","Hyndai"]
+        //     };
+
+        // let text = person.firstname + " " + person.lastname + " :<br>";
+        // text += "Have " + person.cars.length + " cars.<br>";
+        // person.cars.forEach(function(car){
+        //     text += "-- "+car+"<br>";
+        // })
+
+        // document.getElementById("out").innerHTML = text;
+        // document.getElementById("out").innerHTML = person.cars[i];
+
+
+        // function heroes(data) {
+        //     //   console.log(data.members[0].name);
+        //     let text = "";
+        //     text += "Squadname : " + data.squadName + "<br>";
+        //     text += "Hometown  : " + data.homeTown + "<br>Members :<br>";
+        //     data.members.forEach(function(mem){
+        //         text += "---" + mem.name +" ("+ mem.age +")"+"<ul>";
+        //         mem.powers.forEach(function(pow){
+        //             text += "<li>" + pow + "</li>";
+        //         });
+        //         text += "</ul>";
+        //     });
+        //     document.getElementById("div1").innerHTML = text;
+
+        // }
+
+        // fetch('superheroes.json')
+        //     .then(response => response.json())
+        //     .then(data => heroes(data))
+        //     .catch(error => console.log('error', error));
+        
+        function orders(data) {
+            //   console.log(data.members[0].name);
+            let text = "";
+            text += "Order ID: " + data.orderId + "<br>";
+            text += "Order Date: " + data.orderDate + "<br>";
+            text += "Customer: " + data.customer.name + "<br>";
+            text += "Email: " + data.customer.email + "<br>";
+            let tab = document.createElement("table");
+            let cont = ["ID","Product","Quantity","Price","Total"];
+            let tr1 = document.createElement("tr");
+            cont.forEach(function(con){
+                let th = document.createElement("th");
+                let txt = document.createTextNode(con);
+                th.appendChild(txt);
+                tr1.appendChild(th);
+            });
+            tab.appendChild(tr1);
+            data.items.forEach(function(item){
+                let tr = document.createElement("tr");
+
+                let td01 = document.createElement("td");
+                let txt01 = document.createTextNode(item.productId);
+                td01.appendChild(txt01);
+                tr.appendChild(td01);
+
+                let td02 = document.createElement("td");
+                let txt02 = document.createTextNode(item.name);
+                td02.appendChild(txt02);
+                tr.appendChild(td02);
+
+                let td03 = document.createElement("td");
+                let txt03 = document.createTextNode(item.quantity);
+                td03.appendChild(txt03);
+                tr.appendChild(td03);
+
+                let td04 = document.createElement("td");
+                let txt04 = document.createTextNode("$" + item.price);
+                td04.appendChild(txt04);
+                tr.appendChild(td04);
+
+                let td05 = document.createElement("td");
+                let txt05 = document.createTextNode(item.price * item.quantity);
+                td05.appendChild(txt05);
+                tr.appendChild(td05);
+
+                tab.appendChild(tr);
+            })
+
+            document.body.appendChild(tab);
+            
+            let h = document.createElement("h1");
+            h.innerHTML = "Shipping";
+
+            document.body.appendChild(h);
+            
+            let p = document.createElement("p");
+            p.innerHTML = "Address: " + data.shipping.address.street + " " + data.shipping.address.city + " " + data.shipping.address.state + " " + data.shipping.address.zipCode;
+            document.body.appendChild(p);
+
+            document.getElementById("div1").innerHTML = text;
+
+        }
+
+        fetch('order.json')
+            .then(response => response.json())
+            .then(data => orders(data))
+            .catch(error => console.log('error', error));
+
+        // function SaveForm() {
+        //     let fname = document.getElementById("FirstName").value;
+        //     let lname = document.getElementById("LastName").value;
+        //     let country = document.getElementById("Country").value;
+        //     // save data to local storage
+        //     localStorage.setItem('userFirstName',fname);
+        //     localStorage.setItem('userLastName',lname);
+        //     localStorage.setItem('userCountry',country);
+        //     alert("Data saved");
+        // }
+        // function LoadData(){
+        //     // load data from local storage
+        //     let fn = localStorage.getItem('userFirstName');
+        //     let ln = localStorage.getItem('userLastName');
+        //     let ct = localStorage.getItem('userCountry');
+
+        //     document.getElementById("FirstName").value = fn;
+        //     document.getElementById("LastName").value = ln;
+        //     document.getElementById("Country").value = ct;
+
+            // alert("Data Loaded");
+        // }
+        
+    </script>
+
+</body>
+
+</html>

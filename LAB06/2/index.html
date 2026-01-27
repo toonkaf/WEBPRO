@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB6 / 2</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+        }
+        .album{
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 24.25vw);
+            grid-template-rows: auto;
+            gap: 10px;
+            height: 100vh;
+        }
+        .card{
+            /* border: 1px solid gray;
+            border-radius: 10px;
+            vertical-align: top; */
+            display: flex;
+            flex-direction: column;
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            margin: 5% 2.5% 0 2.5%;
+            width: 90%;
+        }
+        .card img{
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-radius: 20px;
+        }
+        .card p{
+            margin: 5px 0;
+            padding: 0;
+        }
+        .card h1{
+            font-size: large;
+            font-weight: bolder;
+        }
+
+        @media screen and (max-width: 1000px){
+            .album{
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 32.3vw);
+            grid-template-rows: auto;
+            gap: 10px;
+            height: 100vh;
+            }
+        }
+
+        @media screen and (max-width: 768px){
+            .album{
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 49vw);
+            grid-template-rows: auto;
+            gap: 10px;
+            height: 100vh;
+            }
+        }
+        
+        @media screen and (max-width: 435px){
+            .album{
+            margin-top: 0;
+            display: grid;
+            grid-template-columns: repeat(1, 100vw);
+            grid-template-rows: auto;
+            gap: 10px;
+            height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function cardd(data) {
+            let text = '<div class="album">';
+                let no = 1;
+                data.map(function(stu){
+                    text += `<div class="card">
+                        <img src=${stu.gender == "Male"? 'http://webdev.it.kmitl.ac.th/labdocs/lab6/images/img_male.png' : 
+                        'http://webdev.it.kmitl.ac.th/labdocs/lab6/images/img_female.png'}>
+                            <h1>${no}. ${stu.name}</h1>
+                            <p>Physics : ${stu.physics}</p>
+                            <p>Maths : ${stu.maths}</p>
+                            <p>English : ${stu.english}</p>
+                        </div>`;
+                no++;
+            });
+            text += '</div>';
+            document.body.innerHTML = text;
+        }
+
+        fetch('student-score.json')
+            .then(response => response.json())
+            .then(data => cardd(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+</html>
