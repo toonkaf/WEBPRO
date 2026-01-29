@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB6 / 4</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+        }
+        button{
+            margin-left: 10px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: red;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .txt{
+            width: 80%;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 2px solid gray;
+            margin-left: 10px;
+            padding: 6px 12px;
+            /* border: none; */
+            font-size: 1rem;
+        }
+        .mvl{
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            background-color: lightgray;
+            border-radius: 20px;
+            width: 100%;
+            min-height: 40px;
+            margin: 20px;
+            padding: 10px 10px 10px 10px;
+            margin-top: 10px;
+            text-align: left;
+            overflow: hidden;
+        }
+        .mvl span{
+            flex-grow: 1;
+            font-size: 1.2rem;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    <div class="container">
+        <h2>🎬 รายการภาพยนตร์/ซีรีส์โปรด</h2>
+        <div style="width: 60vw;">    
+            <div class="input-group" style="width: 100%; display: flex; justify-content: flex-end;">
+                <input type="text" id="movieInput" placeholder="ชื่อภาพยนตร์หรือซีรีส์..." class="txt">
+                <button id="addBtn" style="background-color: dodgerblue;">+ เพิ่ม</button>
+            </div>
+            <div style="width: 100%; display: flex; justify-content: flex-end; margin-top: 10px;">
+                <button id="clearBtn" style="background-color: dodgerblue;">🗑️ ลบทั้งหมด</button>
+            </div>
+            <div id="movieList">
+                </div>
+        </div>
+    </div>
+    </center>
+
+    <script>
+        const movieInput = document.getElementById('movieInput');
+        const addBtn = document.getElementById('addBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const movieList = document.getElementById('movieList');
+
+        let movies = JSON.parse(localStorage.getItem('myMovies')) || [];
+        renderMovies();
+
+        addBtn.addEventListener('click', () => {
+            const title = movieInput.value.trim();
+            if (title) {
+                movies.push(title);
+                updateStorage();
+                movieInput.value = '';
+            }
+        });
+
+        function deleteMovie(index) {
+            movies.splice(index, 1);
+            updateStorage();
+        }
+
+        clearBtn.addEventListener('click', () => {
+            movies = [];
+            updateStorage();
+        });
+
+        function updateStorage() {
+            localStorage.setItem('myMovies', JSON.stringify(movies));
+            renderMovies();
+        }
+
+        function renderMovies() {
+            if (movies.length === 0) {
+                movieList.innerHTML = '<p class="mvl">ยังไม่มีรายการโปรด</p>';
+                return;
+            }
+    
+        movieList.innerHTML = movies.map((movie, index) => `
+            <div class="mvl">
+                <span>🎬 ${movie}</span>
+                <button class="delete-btn" onclick="deleteMovie(${index})">ลบ</button>
+            </div>
+        `).join('');
+}
+
+    </script>
+</body>
+
+</html>
