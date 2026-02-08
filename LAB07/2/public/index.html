@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Menu</h1>
+    <div class="album">
+    </div>
+    <script>
+        let albumDiv = document.querySelector('.album');
+        let menus = [];
+        function createCard(data){
+            let txt = '';
+            data.forEach(item => {
+                txt += `
+                    <div class="card">
+                        <img src="${item.image}" alt="${item.name}">
+                        <a href="${item.path}">${item.name}</a>
+                    </div>
+                `;
+            });
+            albumDiv.innerHTML = txt;
+        }
+
+        fetch('/json/menu.json')
+            .then(response => response.json())
+            .then(data => createCard(data))
+            .catch(error => console.error('Error fetching menu data:', error));
+
+    </script>
+</body>
+</html>

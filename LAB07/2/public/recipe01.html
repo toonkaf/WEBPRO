@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ต้มข่าไก่</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <script>
+
+        function createRecipeCard(data){
+            let txt = '';
+            datas = data[1];
+            txt += `
+                <h1>${datas.name}</h1>
+                <div class="recipe-box">
+                    <div class="recipe-image">
+                        <img src="${datas.image}" alt="${datas.name}">
+                    </div>
+                    <div class="recipe-detail">
+                        <h2>Ingredients</h2>
+                        <ul>
+                            ${datas.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                        </ul>
+                        <h2>Instructions</h2>
+                        <ol>
+                            ${datas.steps.map(step => `<li>${step}</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+                <h1><a href="/index.html">Back to Menu</a></h1>
+            `;
+            document.body.innerHTML = txt;
+        }
+
+        fetch('/json/menu.json')
+            .then(response => response.json())
+            .then(data => createRecipeCard(data));
+    </script>
+</body>
+</html>
