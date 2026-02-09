@@ -37,6 +37,21 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/add', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'add.html'));
+});
+
+app.post('/add', (req, res) => {
+    const { username, password, email, firstname, lastname, age, address, phone } = req.body;
+    const sql = 'INSERT INTO Users (username, password, email, firstname, lastname, age, address, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [username, password, email, firstname, lastname, age, address, phone];
+    conn.query(sql, values, (err, result) => {
+        if (err) throw err;
+        console.log("Data inserted successfully");
+        res.redirect('/');
+    });
+});
+
 app.listen(port, () => {
     console.log(`listening to port ${port}`);
-}); 
+});

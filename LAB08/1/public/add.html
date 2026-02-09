@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 24px;
+        }
+        form div {
+            font-size: 20px;
+            margin: 10px;
+            padding: 5px;
+            display: grid;
+            width: 100%;
+            grid-template-columns: 20% 80%;
+            grid-row: auto;
+            text-align: right;
+            align-items: center;
+        }
+        input {
+            font-size: 20px;
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            width: 85%;
+        }
+    </style>
+</head>
+<body>
+    <!-- public/form.html -->
+    <center>
+    <h1>Add User</h1>
+        <div style="border: 1px solid gray; border-radius: 5px; width: 40%; background-color: lightblue;">
+        <form action="/add" method="POST">
+            <div>
+                Username : <input type="text" name="username">
+                Password : <input type="text" name="password">
+                Email : <input type="email" name="email">
+                Firstname : <input type="text" name="firstname">
+                Lastname : <input type="text" name="lastname">
+                Age : <input type="number" name="age">
+                Address : <input type="text" name="address">
+                Phone : <input type="tel" name="phone">
+            </div>
+            <center><input style="width: 50%; background-color: blue; color: white;" type="submit" value="Submit"></center>
+        </form>
+    </div>
+    <button onclick="location.href='/'" style="margin-top: 20px; padding: 10px 20px; font-size: 20px; border-radius: 5px; background-color: gray; color: white;">Back to Users Data</button>
+    </center>
+</body>
+</html>
