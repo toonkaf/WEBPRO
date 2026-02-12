@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Music Albums</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Music Albums</h1>
+
+    <div class="grid">
+        <% albums.forEach(album=> { %>
+            <div class="card">
+                <img src="<%= album.album_cover %>" alt="cover">
+                <h2>
+                    <%= album.song %>
+                </h2>
+                <p><strong>Album:</strong>
+                    <%= album.album %>(<%= album.year %>)
+                </p>
+                <p><strong>Artist:</strong>
+                    <%= album.artist %>
+                </p>
+                <p><strong>Genre:</strong>
+                    <%= album.genre %>
+                </p>
+            </div>
+            <% }) %>
+    </div>
+
+</body>
+
+</html>
