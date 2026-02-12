@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 24px;
+        }
+        .divout {
+            display: flex;
+            flex-direction: column;
+            padding-left: 5%;
+            padding-right: 5%;
+            width: 100%;
+            align-items: center;
+        }
+        form div{
+            text-align: left;
+            font-size: 20px;
+            padding: 10px;
+            width: 100%;
+        }
+        input {
+            font-size: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            width: 85%;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Login</h1>
+        <div style="border: 1px solid gray; border-radius: 5px; width: 40%; background-color: lightblue;">
+        <form action="/login" method="POST">
+            <div class="divout">
+                <div>
+                    <p>Username :</p>
+                    <input type="text" name="username" placeholder="username or email">
+                </div>
+                <div>
+                    <p>Password :</p>
+                    <input type="text" name="password">
+                </div>
+            </div>
+            <center><input style="width: 50%; background-color: blue; color: white; margin-bottom: 10px;" type="submit" value="Submit"></center>
+        </form>
+    </div>
+    </center>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get("error");
+
+        if (error === "nouser") {
+            alert("ไม่พบบัญชีผู้ใช้");
+        }
+
+        if (error === "wrongpass") {
+            alert("รหัสผ่านไม่ถูกต้อง");
+        }
+
+        if (error === "dberror") {
+            alert("เกิดข้อผิดพลาดในระบบ");
+        }
+    </script>
+</body>
+</html>

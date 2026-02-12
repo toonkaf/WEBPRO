@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            font-size: 24px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: lightblue;
+            border-radius: 5px;
+            padding: 10vh;
+            width: 30%;
+        }
+
+        tr {
+            height: 40px;
+            border: 1px solid gray;
+        }
+
+        th {
+            text-align: right;
+            padding-right: 10px;
+            width: 35%;
+        }
+
+        td{
+            text-align: left;
+            word-break: break-word;
+        }
+        button {
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>User Profile</h2>
+        <table>
+            <tr>
+                <th>Username:</th>
+                <td>
+                    <%= user.username %>
+                </td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>
+                    <%= user.password %>
+                </td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>
+                    <%= user.email %>
+                </td>
+            </tr>
+            <tr>
+                <th>First Name:</th>
+                <td>
+                    <%= user.firstname %>
+                </td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td>
+                    <%= user.lastname %>
+                </td>
+            </tr>
+            <tr>
+                <th>Age:</th>
+                <td>
+                    <%= user.age %>
+                </td>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <td>
+                    <%= user.address %>
+                </td>
+            </tr>
+            <tr>
+                <th>Phone:</th>
+                <td>
+                    <%= user.phone %>
+                </td>
+            </tr>
+        </table>
+        <button onclick="window.location.href='/'">Logout</button>
+    </center>
+</body>
+
+</html>
