@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking System</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include("header") %>
+    <h2>รายการคำสั่งซื้อ</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>ลูกค้า</th>
+            <th>สินค้า</th>
+            <th>สถานะ</th>
+            <th>เปลี่ยนสถานะ</th>
+        </tr>
+        <% orders.forEach((order) => { %>
+            <tr>
+                <td style="width: 5%;"><%= order.id %></td>
+                <td style="width: 30%;"><%= order.customer %></td>
+                <td style="width: 30%;"><%= order.product %></td>
+                <td style="width: 10%;"><%= order.status %></td>
+                <td style="width: 10%;">
+                    <form action="/update/<%= order.id %>" method="POST">
+                        <select name="status">
+                            <option value="รอดำเนินการ" <%= order.status === 'รอดำเนินการ' ? 'selected' : '' %>>รอดำเนินการ</option>
+                            <option value="กำลังจัดส่ง" <%= order.status === 'กำลังจัดส่ง' ? 'selected' : '' %>>กำลังจัดส่ง</option>
+                            <option value="จัดส่งแล้ว" <%= order.status === 'จัดส่งแล้ว' ? 'selected' : '' %>>จัดส่งแล้ว</option>
+                            <option value="ยกเลิก" <%= order.status === 'ยกเลิก' ? 'selected' : '' %>>ยกเลิก</option>
+                        </select>
+                        <button type="submit">อัปเดต</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
