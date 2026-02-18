@@ -29,6 +29,32 @@ button{
 table button{
     background-color: blue;
     color: white;
-    border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.header_form div{
+    display: flex;
+    align-items: left;
+    gap: 2vw;
+    margin-top: 10px;
+}
+
+.header_form input[type="text"]{
+    padding: 5px;
+    width: 30vw;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.header_form button{
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10vw;
+    min-width: fit-content;
+    padding: 5px 10px;
+    font-size: 16px;
 }

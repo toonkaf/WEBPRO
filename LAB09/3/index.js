@@ -34,6 +34,14 @@ app.get('/', (req, res) => {
 app.post('/add', (req, res) => {
     const {customer, product, address, tel } = req.body;
     const query = 'INSERT INTO tracking (customer, product, address, tel, status) VALUES (?, ?, ?, ?, ?)';
+    if (!customer || !product || !address || !tel) {
+        return res.send(`
+            <script>
+                alert("กรุณากรอกข้อมูลให้ครบทุกช่อง");
+                window.location.href = "/";
+            </script>
+        `);
+    }
     db.run(query, [customer, product, address, tel, 'รอดำเนินการ'], function (err) {
         if (err) {
             console.error('Error adding order:', err.message);
