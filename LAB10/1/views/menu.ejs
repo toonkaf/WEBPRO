@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= food.name %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bpmf+Huninn&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="product-detail">
+        <h1>Product <%= food.product_id %> Detail</h1>
+        <img src="<%= food.image_url %>" alt="<%= food.name %>">
+        <h2><%= food.name %> Detail</h2>
+        <p class="description">Description: <%= food.description %></p>
+        <p>Price: <%= food.price %></p>
+        <p>Amount: <%= food.quantity %></p>
+        <button onclick="location.href='/'">Go Back</button>
+    </div>
+</body>
