@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos list</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Todos List</h1>
+        <button onclick="location.href='/add'">Add Todo</button>
+    </div>
+    <table>
+        <tr>
+            <th style="width: 10%;">ID</th>
+            <th style="width: 50%;">Title</th>
+            <th style="width: 30%;">Deadline</th>
+            <th style="width: 10%;">Complete</th>
+        </tr>
+        <% todos.forEach((todo,index)=> { %>
+            <tr class="<%= index % 2 === 0 ? 'odd-row' : '' %>">
+                <td>
+                    <%= todo.id %>
+                </td>
+                <td>
+                    <%= todo.title %>
+                </td>
+                <td>
+                    <%= todo.deadline %>
+                </td>
+                <td style="align-items: flex-start;">
+                    <input type="checkbox" class="status-checkbox" data-id="<%= todo.id %>" <%= todo.status == 1 ? "checked" : "" %>>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+
+    <script>
+        document.querySelectorAll(".status-checkbox").forEach(checkbox => {
+            checkbox.addEventListener("change", function () {
+
+                const id = this.dataset.id;
+                const status = this.checked ? 1 : 0;
+
+                fetch(`/api/todos/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ status: status })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("Updated:", data);
+                    })
+                    .catch(err => console.error(err));
+
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos list</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Create New Todo</h1>
+    <form method="POST" action="/api/todos">
+
+        <label>Title:</label><br>
+        <input type="text" name="title" required>
+
+        <label>Description:</label><br>
+        <textarea name="description"></textarea>
+
+        <label>Deadline:</label><br>
+        <input type="date" name="deadline" required>
+
+        <button type="submit">Create Todo</button>
+    </form>
+    <button onclick="window.location.href='/'" style="margin-left: 20px;">Back to Todos</button>
+    <br>
+</body>
